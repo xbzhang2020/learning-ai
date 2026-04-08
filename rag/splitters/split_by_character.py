@@ -10,4 +10,4 @@ chunks = text_splitters.split_documents(docs)
 for chunk in chunks:
     print(chunk.metadata)
     print(chunk.page_content)
-    print("-" * 100)
+    print("-" * 10)

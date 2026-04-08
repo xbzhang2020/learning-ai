@@ -26,4 +26,4 @@ chunks = text_splitter.split_documents(markdown_chunks)
 for chunk in chunks:
     print(chunk.metadata)
     print(chunk.page_content)
-    print("-" * 100)
+    print("-" * 10)
