@@ -26,3 +26,7 @@ document_embedding_list = [embeddings.embed_query(text) for text in document_tex
 for document_embedding in document_embedding_list:
     similarity = cosine_similarity(query_embedding, document_embedding)
     print("相似度:", similarity)
+
+# 相似度: 0.7289771938339588
+# 相似度: 0.4192835022236361
+# 相似度: 0.6745224697886465
