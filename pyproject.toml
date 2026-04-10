@@ -1,0 +1,23 @@
+[project]
+name = "learning-ai"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "beautifulsoup4>=4.14.3",
+    "langchain>=0.3.28",
+    "langchain-chroma>=0.2.6",
+    "langchain-community>=0.3.31",
+    "langchain-huggingface>=0.3.1",
+    "langchain-milvus>=0.2.1",
+    "langchain-openai>=0.3.35",
+    "langchain-text-splitters>=0.3.11",
+    "llama-index>=0.14.16",
+    "llama-index-embeddings-huggingface>=0.6.1",
+    "numpy>=2.0.2",
+    "openai>=2.30.0",
+    "pymilvus[milvus-lite]>=2.5.0,<2.6.0",
+    "python-dotenv>=1.2.1",
+    "sentence-transformers>=5.1.2",
+]
