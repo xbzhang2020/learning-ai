@@ -7,4 +7,7 @@ loader = WebBaseLoader(
 )
 docs = loader.load()
 
-print(docs)
+print(len(docs))
+
+with open("assets/wukong/wukong_wiki.txt", "w") as f:
+    f.write(docs[0].page_content.strip())

@@ -3,7 +3,7 @@ from langchain_text_splitters import (
     RecursiveCharacterTextSplitter,
 )
 
-with open("data/wukong/黑悟空版本介绍.md", "r", encoding="utf-8") as f:
+with open("assets/wukong/黑悟空版本介绍.md", "r", encoding="utf-8") as f:
     markdown_text = f.read()
 
 headers_to_split_on = [
