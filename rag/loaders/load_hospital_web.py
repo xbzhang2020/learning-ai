@@ -28,5 +28,5 @@ if __name__ == "__main__":
     if len(docs) > 0:
         # print(docs[0].metadata)
         # print(docs[0].page_content)
-        with open(f"assets/hospital/hospital_{hospital_id}.txt", "w") as f:
+        with open(f"output/hospital_{hospital_id}.txt", "w") as f:
             f.write(docs[0].page_content.strip())
