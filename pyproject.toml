@@ -16,6 +16,7 @@ dependencies = [
     "langchain-text-splitters>=0.3.11",
     "llama-index>=0.14.16",
     "llama-index-embeddings-huggingface>=0.6.1",
+    "llama-index-llms-deepseek>=0.2.2",
     "markdownify>=1.2.2",
     "numpy>=2.0.2",
     "openai>=2.30.0",

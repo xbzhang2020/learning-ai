@@ -5,7 +5,7 @@ from typing_extensions import TypedDict, Annotated
 from typing import List
 import os
 import operator
-from verctor_chroma import chroma_wukong_db
+from rag.vector_stores.chroma import chroma_wukong_db
 from langgraph.graph import StateGraph, START, END
 from langchain_core.documents import Document
 

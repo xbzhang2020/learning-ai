@@ -36,5 +36,5 @@ if __name__ == "__main__":
     # markdown_content = load_wukong_wiki_markdown()
     text_content = load_wukong_wiki_text()
 
-    with open("output/wukong_wiki.txt", "w") as f:
+    with open("assets/wukong/wukong_wiki.txt", "w") as f:
         f.write(text_content)

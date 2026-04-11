@@ -22,8 +22,8 @@ def split_by_recursive(file_path: str, chunk_size: int = 200, chunk_overlap: int
 
 if __name__ == "__main__":
 
-    chunks = split_by_recursive("assets/shanxi/云冈石窟.txt")
+    chunks = split_by_recursive("assets/wukong/wukong_wiki.txt")
 
-    with open("output/shanxi_yungang_recursive_chunks.txt", "w") as f:
+    with open("output/wukong_wiki_recursive_chunks.txt", "w") as f:
         for chunk in chunks:
             f.write(f"{str(chunk.metadata)}\n{chunk.page_content}\n\n{"-" * 10}\n\n")
