@@ -1,30 +1,35 @@
+"""
+wukong agent: 使用工具检索相关文档并回答用户的问题。
+"""
+
 from rag.vector_stores.chroma import chroma_wukong_db
 from rag.models.deepseek import deepseek_model
-from langchain_core.prompts import ChatPromptTemplate
+from langchain.agents import create_agent
+from langchain.tools import tool
+
+
+@tool()
+def retrieve_context(query: str):
+    """Retrieve information to help answer a query."""
+    retrieved_docs = chroma_wukong_db.similarity_search(query=query, k=2)
+    serialized = "\n\n".join(
+        (f"Source: {doc.metadata}\nContent: {doc.page_content}")
+        for doc in retrieved_docs
+    )
+    return serialized
+
 
 if __name__ == "__main__":
-    # 检索相似文档
-    query = "游戏的玩法"
-    similar_docs = chroma_wukong_db.similarity_search(query=query, k=3)
-    similar_docs_text = "\n".join([doc.page_content for doc in similar_docs])
-    print(similar_docs_text)
-    print("-" * 10)
-
-    # 构建提示词
-    template = ChatPromptTemplate(
-        [
-            (
-                "system",
-                """你是一名游戏《黑神话：悟空》的专家，请根据以下文档回答用户的问题。如果用户的问题不在文档中，请回答“我不知道”。
-                上下文：{context}""",
-            ),
-            ("human", "{query}"),
-        ]
+    prompt = "你是一名游戏《黑神话：悟空》的专家，请利用工具检索相关文档并回答用户的问题。如果用户的问题不在文档中，请回答“我不知道”。"
+    agent = create_agent(
+        model=deepseek_model,
+        system_prompt=prompt,
+        tools=[retrieve_context],
     )
-    prompt = template.format(query=query, context=similar_docs_text)
-    # response = model.invoke(prompt)
-    # print(response.content)
-
-    for chunk in deepseek_model.stream(prompt):
-        print(chunk.text, end="")
-    print("")
+    query = "游戏的玩法"
+    messages = [{"role": "user", "content": query}]
+    for event in agent.stream(
+        {"messages": messages},
+        stream_mode="values",
+    ):
+        event["messages"][-1].pretty_print()

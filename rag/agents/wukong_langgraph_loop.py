@@ -1,20 +1,11 @@
-from langchain_deepseek import ChatDeepSeek
+from rag.models.deepseek import deepseek_model
 from langchain_core.messages import AnyMessage, HumanMessage, SystemMessage
-from dotenv import load_dotenv
 from typing_extensions import TypedDict, Annotated
 from typing import List
-import os
 import operator
 from rag.vector_stores.chroma import chroma_wukong_db
 from langgraph.graph import StateGraph, START, END
 from langchain_core.documents import Document
-
-load_dotenv()
-model = ChatDeepSeek(
-    model="deepseek-chat",
-    api_key=os.getenv("DEEPSEEK_API_KEY"),
-)
-
 
 class State(TypedDict):
     messages: Annotated[list[AnyMessage], operator.add]
@@ -36,7 +27,7 @@ def generate(state: State):
             content=f"你是一名游戏《黑神话：悟空》的专家，请根据以下文档回答用户的问题。如果用户的问题不在文档中，请回答“我不知道”。\n上下文：{context}"
         ),
     ] + state["messages"]
-    response = model.invoke(messages)
+    response = deepseek_model.invoke(messages)
     return {"messages": [response]}
 
 
