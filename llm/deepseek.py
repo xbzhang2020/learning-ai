@@ -1,4 +1,3 @@
-# Please install OpenAI SDK first: `pip3 install openai`
 import os
 from openai import OpenAI
 from dotenv import load_dotenv
