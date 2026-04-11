@@ -208,6 +208,7 @@ __marimo__/
 
 storage/
 chroma_wukong_db/
+*.db
 
 .DS_Store
 output/
