@@ -1,16 +1,16 @@
 """
-使用 LangChain 的 RePhraseQueryRetriever 重写查询语句，提高检索效果。
+使用 LangChain 的 MultiQueryRetriever 生成多个查询语句，提高检索效果。
 """
 import logging
 
-from langchain_classic.retrievers import RePhraseQueryRetriever
+from langchain_classic.retrievers import MultiQueryRetriever
 from rag.models.deepseek import deepseek_model
 from rag.vector_stores.chroma import chroma_wukong_db
 
 logging.basicConfig()
-logging.getLogger("langchain_classic.retrievers.re_phraser").setLevel(logging.INFO)
+logging.getLogger("langchain_classic.retrievers.multi_query").setLevel(logging.INFO)
 
-retriever_from_llm = RePhraseQueryRetriever.from_llm(
+retriever_from_llm = MultiQueryRetriever.from_llm(
     retriever=chroma_wukong_db.as_retriever(), llm=deepseek_model
 )
 
