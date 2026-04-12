@@ -9,3 +9,4 @@ milvus_wukong_db = Milvus(
     connection_args={"uri": URI, "alias": ALIAS},
     index_params={"index_type": "FLAT", "metric_type": "L2"},
 )
+  
