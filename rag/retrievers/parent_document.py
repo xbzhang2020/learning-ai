@@ -1,3 +1,6 @@
+"""
+使用父文档检索器处理文档，提高检索效果。
+"""
 from langchain_chroma import Chroma
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_classic.storage import InMemoryStore

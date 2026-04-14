@@ -1,3 +1,6 @@
+"""
+使用窗口解析器处理文档，提高检索效果。
+"""
 from llama_index.core import Settings, Document, VectorStoreIndex
 from llama_index.core.node_parser import SentenceWindowNodeParser, SentenceSplitter
 from llama_index.core.postprocessor import MetadataReplacementPostProcessor
